@@ -1,0 +1,48 @@
+<% include partials/header %>
+
+<script>
+
+	
+	function initMap(){
+				var mapOptions = {
+				center: new google.maps.LatLng( 37.3382,-121.8863),
+				zoom: 10
+				};
+				var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+				<% for(var p of c) { %>
+					<% for(var l of p.location) { %>
+						var myLatLng = {lat: <%=l.lat%>, lng: <%=l.lng%>};
+						console.log(myLatLng)
+						
+						var Marker = new google.maps.Marker({
+						position: new google.maps.LatLng(myLatLng),
+						map: map});
+						<% if(p.color === 'Green') { %>
+							iconFile = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+							Marker.setIcon(iconFile)
+						<% } %>
+						<% if(p.color === 'Red') { %>
+							iconFile = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+							Marker.setIcon(iconFile)
+						<% } %>
+						<% if(p.color === 'Blue') { %>
+							iconFile = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+							Marker.setIcon(iconFile)
+						<% } %>
+						<% if(p.color === 'Yellow') { %>
+							iconFile = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+							Marker.setIcon(iconFile)
+						<% } %>
+					<% } %>
+				<% } %>
+	}
+		
+
+	
+
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN4UMnNZqekzIK2SpN20NQUl4P2xl3snI&callback=initMap" type="text/javascript">
+</script>
+
+<% include partials/footer %>
