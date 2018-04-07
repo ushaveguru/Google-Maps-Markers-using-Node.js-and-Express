@@ -19,6 +19,7 @@
     "mongodb": "^3.0.5",
     "mongodb-client": "0.0.1",
     "mongojs": "^2.5.0",
-    "mongoose": "^5.0.12"
+    "mongoose": "^5.0.12",
+    "nodemon": "^1.17.3"
   }
 }
